@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpine JS</title>
+
     <script src="greet.js"></script>
     <script src="greet-wedget.js" defer></script>
+    <script src ="enoughAirtime.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     
 </head>
@@ -19,6 +21,21 @@
               background-color:lightblue;
               margin-bottom: 1em;
                 }
+                .input > label{
+                    /* background-color: orangered; */
+                    display: inline-block;
+                    width: 15em;
+                    padding: 1em;
+                    font-weight: bold;
+                }
+                .input >input[type="text"] {
+                    /* background-color: orangered; */
+                    /* display: inline-block; */
+                    /* width: 15em; */
+                       padding: 1em;
+                       margin :1em
+                    /* font-weight: bold; */
+                }
            </style>
 
            <div x-show= "message.length >0 " class = "message"x-text ="message">
@@ -28,5 +45,35 @@
            <input type="text" id="name" x-model ="name">
              <button x-on:click ="greetMe">Greet!</button>
    </div>       
+      
+       <div class ="" x-data="{
+        airtimeUsage: '',
+        availableAmount: '0.00',
+        airtimeMessage: '',
+        calculate(){
+           this.airtimeMessage = enoughAirtime(this.airtimeUsage, this.availableAmount)
+        }
+       }"
+       >
+                <h2>Enough Airtime</h2>
+             <div class ="input " >
+                  <label for="usage">Please enter your airtime usage:</label>
+                   <input type="text" id="usage" x-model ="airtimeUsage">
+              </div>
+          <div class ="input ">
+              <label for="amount">Amount available:</label>
+              <input type="text" id="amount" x-model ="availableAmount">
+          </div>
+     
+          <div class = "message" x-text = "airtimeMessage">
+           Number of airtime left displayed here ...
+          </div>
+          <div>
+           <button x-on:click ="calculate">Calculate airtime usage</button>
+           </div>
+      </div>
+    
+
+
 </body>
 </html>
