@@ -6,20 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpine JS</title>
     <script src="greet.js"></script>
+    <script src="greet-wedget.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    
 </head>
 <body>
-  <div x-data="{
-           name : '',
-           message :'',
-           showGreeting :false,
-           greetMe(){
-            this.message = greet(this.name);
-            setTimeout(() => {
-              this.message ='';
-            },3000);
-          } 
-          }">
+  <div x-data="greetWidget">
            <h2>My greet widget</h2>
            <style>
              .message{
@@ -29,7 +21,7 @@
                 }
            </style>
 
-           <div x-show = "message>0" class = "message"x-text ="message">
+           <div x-show= "message.length >0 " class = "message"x-text ="message">
               You will be greeted here.
            </div>
            <label for="name"> Please enter your Name</label>
