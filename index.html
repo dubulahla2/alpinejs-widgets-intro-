@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine JS</title>
+    <script src="greet.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+  <div x-data="{
+           name : '',
+           message :'',
+           showGreeting :false,
+           greetMe(){
+            this.message = greet(this.name);
+            setTimeout(() => {
+              this.message ='';
+            },3000);
+          } 
+          }">
+           <h2>My greet widget</h2>
+           <style>
+             .message{
+              padding: 1em;
+              background-color:lightblue;
+              margin-bottom: 1em;
+                }
+           </style>
+
+           <div class = "message"x-text ="message">
+              You will be greeted here.
+           </div>
+           <label for="name"> Please enter your Name</label>
+           <input type="text" id="name" x-model ="name">
+             <button x-on:click ="greetMe">Greet!</button>
+   </div>       
+</body>
+</html>
