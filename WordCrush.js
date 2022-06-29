@@ -23,7 +23,7 @@ if (characters.length <= sum){
 }
 }return longest;
 }
-console.log(shortestWord('The dog jumped over the shipyard fence'))
+
 
 
 function wordLengths(word){
