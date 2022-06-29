@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpine JS</title>
 
+    <script src="WordCrush.js"></script>
+    <script src="transportFee.js"></script>
+    <script src="totalPhoneBill.js"></script>
     <script src="greet.js"></script>
     <script src="greet-wedget.js" defer></script>
     <script src="enoughAirtime.js"></script>
@@ -19,7 +22,7 @@
     <div Class="widgets">
 
 
-        <div class = "widget" x-data="greetWidget">
+        <div class="widget" x-data="greetWidget">
             <h2>My greet widget</h2>
             <style>
                 .message {
@@ -42,19 +45,21 @@
                     /* width: 15em; */
                     padding: 1em;
                     margin: 1em;
-                        /* font-weight: bold; */
+                    /* font-weight: bold; */
                 }
-                 .widgets{
+
+                .widgets {
                     display: flex;
 
-                 }
-                 .widget{
-                    flex :1;
+                }
+
+                .widget {
+                    flex: 1;
                     border: 1px solid;
                     margin: 1em;
                     padding: 1em;
                     border-radius: 1em;
-                 }
+                }
             </style>
 
             <div x-show="message.length >0 " class="message" x-text="message">
@@ -65,7 +70,7 @@
             <button x-on:click="greetMe">Greet!</button>
         </div>
 
-        <div class= "widget" x-data="{
+        <div class="widget" x-data="{
         airtimeUsage: '',
         availableAmount: '0.00',
         airtimeMessage: '',
@@ -93,6 +98,86 @@
     </div>
 
 
+    <div class="widget"  x-data="{
+              airtimeUsage: '',
+               airtimeMessage: '',
+               calculate1(){
+               this.airtimeMessage = totalPhoneBill(this.airtimeUsage)
+            }
+           }">
+        <h2>Total phone bill</h2>
+        <div class="inputString ">
+            <label for="callSmsString"> Please enter string 'call, sms, call, sms, sms':</label>
+            <input type="text" id="callSmsString" x-model="airtimeUsage">
+        </div>
+
+        <div class="message" x-text="airtimeMessage">
+            totalPhoneBill will be displayed here ...
+        </div>
+        <div>
+            <button x-on:click="calculate1">Calculate airtime usage</button>
+        </div>
+    </div>
+
+
+
+
+    <div x-data = "{
+          shift: 'Hlanganani',
+         feeMessage: '',
+        transportFee(){
+           return 'Hlanganani' ;
+              } ,
+             
+           checkfee(){
+            return 'Dubula';
+          }
+      }">
+        <h2>Which shift?</h2>
+        <h2 x-text = "feeMessage"></h2>
+        <form action="/action_page.php"></form>
+          <input type="radio" id="morningShift" x-model ="shift" value = "morningShift" >
+          <label for="morningShift">morning' shift</label><br>
+          <input type="radio" id="afternoonShift" x-model ="shift" value = "afternoonShift" >
+          <label for="afternoonShift">'afternoon' shift</label><br>
+          <input type="radio" id="nightshift"x-model ="shift" value = "nightshift"  >
+          <label for="nightshift">'night' shift</label>
+      </form>
+        <div class="message" x-show = "shift != '' " >
+            
+            <template x-if="checkfee()"> 
+                  <h1 x-text = "feeMessage" ></h1>
+                  transportFee will be displayed here ...
+            </template>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="widget" x-data="{
+         sentence:'',
+         Message: '',
+         calculate2(){
+         this.Message = longestword(this.sentence)
+        }
+        }">
+        <h2>Word game</h2>
+         <br>
+        
+       <div class=" strMessage">
+      <label for= "strMsg">Enter longest word</label>
+      <input type="text" id="strMsg" x-model= "sentence">
+       </div>
+
+      <div class="message" x-text="Message">
+       Longest word results will be displayed here..
+      </div>
+       <div>
+      <button x-on:click="calculate2"> Start WordCrush</button>
+         </div>
+   </div>
 </body>
 
 </html>
