@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpine JS</title>
 
+    <script src="wordCrushWordLengths.js"></script>
+    <script src="wordCrushShortestWord.js"></script>
     <script src="WordCrush.js"></script>
     <script src="transportFee.js"></script>
     <script src="totalPhoneBill.js"></script>
@@ -53,7 +55,7 @@
 
                 .widgets {
                     display: flex;
-                    
+
 
                 }
 
@@ -64,34 +66,39 @@
                     padding: 1em;
                     border-radius: 1em;
                     background-color: white;
-                    
+
                 }
-                .widgets2{
+
+                .widgets2 {
                     display: flex;
                 }
+
                 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
 
-html {
-  height: 2000px;
-  background-color: red;
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
-  background-size: 100% auto;
-  background-position: top center;
-  background-attachment: fixed;
-  }
+                html {
+                    height: 2000px;
+                    background-color: red;
+                    background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
+                    background-size: 100% auto;
+                    background-position: top center;
+                    background-attachment: fixed;
+                }
 
-/* body {
+                /* body {
   height: 100%;
   background-image: linear-gradient(hsl(10,90,66), transparent 70%);
   background-size: 100% 100%;
   mix-blend-mode: difference;
   } */
             </style>
-
+        <div class = "widget" x-data ="{
+                 
+                  
+             }">
             <div x-show="message.length >0 " class="message" x-text="message">
                 You will be greeted here.
             </div>
@@ -191,20 +198,81 @@ html {
         <div class="widget" x-data="{
          sentence:'',
          Message: '',
-         calculate2(){
+         calculate3(){
          this.Message = longestword(this.sentence);
          
         }
         }">
-            <h2>Word game</h2>
+            <h2>Word game -Longest word</h2>
             <br>
 
             <div class=" strMessage">
-                <label for="strMsg">Enter longest word</label>
+                <label for="strMsg">Pleasse Enter sentence:</label>
                 <input type="text" id="strMsg" x-model="sentence">
             </div>
 
-            <div class="message" x-text="Message" >;
+            <div class="message" x-text="Message">;
+                Longest word results will be displayed here..
+            </div>
+            <div>
+                <button x-on:click="calculate3"> Start WordCrush</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=widgets2>
+
+        <div class="widget" x-data="{
+            sentence:'',
+            Message: '',
+            calculate2(){
+            this.Message = wordLengths(this.sentence);
+            
+           }
+           }">
+            <h2>Word game - Word Lengths</h2>
+            <br>
+
+            <div class=" strMessage">
+                <label for="strMsg">Please enter sentence:</label>
+                <input type="text" id="strMsg" x-model="sentence">
+            </div>
+
+            <div class="message" x-text="Message">;
+                Longest word results will be displayed here..
+            </div>
+            <div>
+                <button x-on:click="calculate2"> Start WordCrush</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="widget" x-data="{
+         sentence:'',
+         Message: '',
+         calculate2(){
+         this.Message = shortestWord(this.sentence);
+         
+        }
+        }">
+            <h2>Word game - Shortest word</h2>
+            <br>
+
+            <div class=" strMessage">
+                <label for="strMsg">Please enter sentence:</label>
+                <input type="text" id="strMsg" x-model="sentence">
+            </div>
+
+            <div class="message" x-text="Message">;
                 Longest word results will be displayed here..
             </div>
             <div>
