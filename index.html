@@ -6,118 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpine JS</title>
-
+    <link rel="stylesheet" href="style.css">
+    
     <script src="wordCrushWordLengths.js"></script>
+    <script src="wordLenghtCrushAlpine.js"></script>
+
     <script src="wordCrushShortestWord.js"></script>
+    <script src="wordCrushShortestWordAlpine.js"></script>
+
+    
     <script src="WordCrush.js"></script>
-    <script src="transportFee.js"></script>
+    <script src="wordCrushLongestWord.js"></script>
+    
+    <script src="totalBillAlpine.js"></script>
     <script src="totalPhoneBill.js"></script>
-    <script src="greet.js"></script>
-    <script src="greet-wedget.js" defer></script>
+
     <script src="enoughAirtime.js"></script>
+    <script src="enouhAirAlpine.js"></script>
+
     <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
 
 <body>
 
-    <div Class="widgets">
-
-<!-- 
-         <div class="widget" x-data="greetWidget">
-
-            <h2>My greet widget</h2> -->
-            <style>
-                body{
-                    color: whitesmoke !important;
-                }
-                .message {
-                    padding: 1em;
-                     background-color: whitesmoke;
-                    margin-bottom: 1em;
-                    color: black !important;
-                }
-
-                .input>label {
-                    /* background-color: orangered; */
-                    display: inline-block;
-                    width: 15em;
-                    padding: 1em;
-                    font-weight: bold;
-                }
-
-                .input>input[type="text"] {
-                    background-color: white;
-                    /* display: inline-block; */
-                    /* width: 15em; */
-                    padding: 1em;
-                    margin: 1em;
-                    /* font-weight: bold; */
-                }
-
-                .widgets {
-                    display: flex;
-
-
-                }
-
-                .widget {
-                    flex: 1;
-                    border: 1px solid;
-                    margin: 1em;
-                    padding: 1em;
-                    border-radius: 1em;
-                    background-color:brown ;
-                    opacity:0.777;
-                    
-
-                }
-
-                .widgets2 {
-                    display: flex;
-                }
-
-                * {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                }
-
-                html {
-                    height: 2000px;
-                    background-color: red;
-                    background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
-                    background-size: 100% auto;
-                    background-position: top center;
-                    background-attachment: fixed;
-                }
-
-                    /* body {
-                      height: 100%;
-                      background-image: linear-gradient(hsl(10,90,66), transparent 70%);
-                           background-size: 100% 100%;
-                          mix-blend-mode: difference;
-                    } */
-            </style>
-            <!-- <h1 x-text="name"></h1>
-            <div x-show="message.length >0 " class="message" x-text="message">
-                You will be greeted here.
-            </div>
-            <label for="name"> Please enter your Name</label>
-            <input type="text" id="name" x-model="name">
-            <button x-on:click="greetMe">Greet!</button>
-        </div> -->
-
-
-
-        <div class="widget" x-data="{
-        airtimeUsage: '',
-        availableAmount: '0.00',
-        airtimeMessage: '',
-        calculate(){
-           this.airtimeMessage = enoughAirtime(this.airtimeUsage, this.availableAmount)
-        }
-       }">
+        <div class="widget" x-data="enoughAir">
             <h2>Enough Airtime</h2>
             <div class="input ">
                 <label for="usage">Please enter your airtime usage:</label>
@@ -140,13 +53,8 @@
 
     <div class= "widgets2" >
 
-        <div class="widget" x-data="{
-              airtimeUsage: '',
-               airtimeMessage: '',
-               calculate1(){
-               this.airtimeMessage = totalPhoneBill(this.airtimeUsage)
-            }
-           }">
+        <div class="widget" x-data="billWidget"
+           >
             <h2>Total phone bill</h2>
             <div class="input ">
                 <label for="callSmsString"> Please enter string 'call, sms, call, sms, sms':</label>
@@ -164,48 +72,13 @@
 
 
 
-        <!-- <div x-data = "{
-          shift: 'Hlanganani',
-         feeMessage: '',
-        transportFee(){
-           return 'Hlanganani' ;
-              } ,
-             
-           checkfee(){
-            return 'Dubula';
-          }
-      }">
-        <h2>Which shift?</h2>
-        <h2 x-text = "feeMessage"></h2>
-        <form action="/action_page.php"></form>
-          <input type="radio" id="morningShift" x-model ="shift" value = "morningShift" >
-          <label for="morningShift">morning' shift</label><br>
-          <input type="radio" id="afternoonShift" x-model ="shift" value = "afternoonShift" >
-          <label for="afternoonShift">'afternoon' shift</label><br>
-          <input type="radio" id="nightshift"x-model ="shift" value = "nightshift"  >
-          <label for="nightshift">'night' shift</label>
-      </form>
-        <div class="message" x-show = "shift != '' " >
-            
-            <template x-if="checkfee()"> 
-                  <h1 x-text = "feeMessage" ></h1>
-                  transportFee will be displayed here ...
-            </template>
-        </div>
-    </div> -->
+        
 
 
 
 
 
-        <div class="widget" x-data="{
-         sentence:'',
-         Message: '',
-         calculate3(){
-         this.Message = longestword(this.sentence);
-         
-        }
-        }">
+        <div class="widget" x-data="longestWidget">
             <h2>Word game -Longest word</h2>
             <br>
 
@@ -226,14 +99,7 @@
 
     <div class=widgets2>
 
-        <div class="widget" x-data="{
-            sentence:'',
-            Message: '',
-            calculate2(){
-            this.Message = wordLengths(this.sentence);
-            
-           }
-           }">
+        <div class="widget" x-data="lengthWidget">
             <h2>Word game - Word Lengths</h2>
             <br>
 
@@ -259,14 +125,7 @@
 
 
 
-        <div class="widget" x-data="{
-         sentence:'',
-         Message: '',
-         calculate2(){
-         this.Message = shortestWord(this.sentence);
-         
-        }
-        }">
+        <div class="widget" x-data="shortWidget">
             <h2>Word game - Shortest word</h2>
             <br>
 
