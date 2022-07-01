@@ -1,5 +1,5 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.data('lengthWidget', function () {
+    Alpine.data('lengthWidged', function () {
         return {
             sentence:'',
             Message: '',
